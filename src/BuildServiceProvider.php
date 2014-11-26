@@ -36,6 +36,9 @@ class BuildServiceProvider extends PackageServiceProvider {
      */
     public function boot()
     {
+        // Make sure helpers are included
+        require_once( __DIR__ . '/helpers.php');
+
         // Bind build class aliases
         $this->package('esensi/build', 'esensi/build', __DIR__);
         $this->addAliases('esensi/build', ['build']);
