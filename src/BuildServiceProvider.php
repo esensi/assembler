@@ -1,6 +1,7 @@
 <?php namespace Esensi\Build;
 
 use \Esensi\Core\Providers\PackageServiceProvider;
+use \Illuminate\Console\Application;
 use \Illuminate\Support\Facades\Config;
 use \Illuminate\Support\Facades\Event;
 
@@ -18,9 +19,8 @@ class BuildServiceProvider extends PackageServiceProvider {
      */
     public function register()
     {
-        require __DIR__ . '/helpers.php';
-
-        Event::listen('artisan.start', function(\Illuminate\Console\Application $artisan)
+        // Add all of the Artisan commands
+        Event::listen('artisan.start', function(Application $artisan)
         {
             foreach(Config::get('esensi/build::build.aliases', []) as $alias => $command)
             {
@@ -37,6 +37,7 @@ class BuildServiceProvider extends PackageServiceProvider {
     public function boot()
     {
         // Bind build class aliases
+        $this->package('esensi/build', 'esensi/build', __DIR__ . '/../..');
         $this->addAliases('esensi/build', ['build']);
 
         // Get Blade compiler
@@ -58,4 +59,5 @@ class BuildServiceProvider extends PackageServiceProvider {
             return preg_replace($matcher, '$1<?php echo build_styles$2; ?>', $value);
         });
     }
+
 }
