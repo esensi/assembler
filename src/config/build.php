@@ -11,7 +11,7 @@ return [
     | Esensi\Build components package. You can publish these to your project for
     | modification using the following Artisan command:
     |
-    | php artisan config:publish esensi/core
+    | php artisan config:publish esensi/build
     |
     */
 

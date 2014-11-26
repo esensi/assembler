@@ -22,7 +22,7 @@ class BuildServiceProvider extends PackageServiceProvider {
 
         Event::listen('artisan.start', function(\Illuminate\Console\Application $artisan)
         {
-            foreach(Config::get('esensi/core::build.aliases', []) as $alias => $command)
+            foreach(Config::get('esensi/build::build.aliases', []) as $alias => $command)
             {
                 $artisan->add(new $command());
             }
@@ -37,7 +37,7 @@ class BuildServiceProvider extends PackageServiceProvider {
     public function boot()
     {
         // Bind build class aliases
-        $this->addAliases('esensi/core', ['build']);
+        $this->addAliases('esensi/build', ['build']);
 
         // Get Blade compiler
         $blade = $this->app['view']->getEngineResolver()->resolve('blade')->getCompiler();
