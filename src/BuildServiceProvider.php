@@ -37,7 +37,7 @@ class BuildServiceProvider extends PackageServiceProvider {
     public function boot()
     {
         // Bind build class aliases
-        $this->package('esensi/build', 'esensi/build', __DIR__ . '/../..');
+        $this->package('esensi/build', 'esensi/build', __DIR__);
         $this->addAliases('esensi/build', ['build']);
 
         // Get Blade compiler
