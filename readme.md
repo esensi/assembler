@@ -1,4 +1,4 @@
-## Esensi Core Components Package
+## Esensi Build Components Package
 
 Esensi is an awesome Laravel boilerplate application. This package contains the build components that integrate Esensi with the Gulp JS build processes. If you are starting a new Esensi-based project then you should start by forking the [Esensi boilerplate](http://github.com/esensi/esensi) repository which includes this package as a Composer dependency.
 
