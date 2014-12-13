@@ -1,19 +1,23 @@
 <?php namespace Esensi\Build;
 
-use \Esensi\Core\Providers\PackageServiceProvider;
-use \Illuminate\Console\Application;
-use \Illuminate\Support\Facades\Config;
-use \Illuminate\Support\Facades\Event;
+use Esensi\Core\Providers\PackageServiceProvider;
+use Illuminate\Console\Application;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Event;
 
 /**
- * Service provider for Esensi\Build components package
+ * Service provider for Esensi\Build components package.
  *
- * @author daniel <daniel@bexarcreative.com>
+ * @package Esensi\Build
+ * @author daniel <dalabarge@emersonmedia.com>
+ * @copyright 2014 Emerson Media LP
+ * @license https://github.com/esensi/user/blob/master/LICENSE.txt MIT License
+ * @link http://www.emersonmedia.com
  */
 class BuildServiceProvider extends PackageServiceProvider {
 
     /**
-     * Registers the resource dependencies
+     * Registers the resource dependencies.
      *
      * @return void
      */

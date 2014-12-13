@@ -1,7 +1,16 @@
 <?php namespace Esensi\Build\Commands;
 
-use \Esensi\Build\Commands\BuildCommand;
+use Esensi\Build\Commands\BuildCommand;
 
+/**
+ * Command for building the stylesheet assets.
+ *
+ * @package Esensi\Build
+ * @author daniel <dalabarge@emersonmedia.com>
+ * @copyright 2014 Emerson Media LP
+ * @license https://github.com/esensi/user/blob/master/LICENSE.txt MIT License
+ * @link http://www.emersonmedia.com
+ */
 class BuildStylesCommand extends BuildCommand {
 
     /**

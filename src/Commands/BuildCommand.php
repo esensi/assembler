@@ -1,14 +1,23 @@
 <?php namespace Esensi\Build\Commands;
 
-use \RuntimeException;
-use \Illuminate\Console\Command;
-use \Illuminate\Support\Facades\App;
-use \Illuminate\Support\Facades\Config;
-use \Symfony\Component\Console\Input\InputOption;
-use \Symfony\Component\Console\Input\InputArgument;
-use \Symfony\Component\Process\Process;
-use \Symfony\Component\Process\Exception\ProcessTimedOutException;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
+use RuntimeException;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Process\Exception\ProcessTimedOutException;
+use Symfony\Component\Process\Process;
 
+/**
+ * Command for building all the assets.
+ *
+ * @package Esensi\Build
+ * @author daniel <dalabarge@emersonmedia.com>
+ * @copyright 2014 Emerson Media LP
+ * @license https://github.com/esensi/user/blob/master/LICENSE.txt MIT License
+ * @link http://www.emersonmedia.com
+ */
 class BuildCommand extends Command {
 
     /**
