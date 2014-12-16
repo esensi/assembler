@@ -1,4 +1,4 @@
-<?php namespace Esensi\Build;
+<?php namespace Esensi\Assembler;
 
 use Esensi\Core\Providers\PackageServiceProvider;
 use Illuminate\Console\Application;
@@ -6,15 +6,15 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Event;
 
 /**
- * Service provider for Esensi\Build components package.
+ * Service provider for Esensi\Assembler components package.
  *
- * @package Esensi\Build
+ * @package Esensi\Assembler
  * @author daniel <dalabarge@emersonmedia.com>
  * @copyright 2014 Emerson Media LP
- * @license https://github.com/esensi/user/blob/master/LICENSE.txt MIT License
+ * @license https://github.com/esensi/assembler/blob/master/LICENSE.txt MIT License
  * @link http://www.emersonmedia.com
  */
-class BuildServiceProvider extends PackageServiceProvider {
+class AssemblerServiceProvider extends PackageServiceProvider {
 
     /**
      * Registers the resource dependencies.
@@ -26,7 +26,7 @@ class BuildServiceProvider extends PackageServiceProvider {
         // Add all of the Artisan commands
         Event::listen('artisan.start', function(Application $artisan)
         {
-            foreach(Config::get('esensi/build::build.aliases', []) as $alias => $command)
+            foreach(Config::get('esensi/assembler::build.aliases', []) as $alias => $command)
             {
                 $artisan->add(new $command());
             }
@@ -44,8 +44,8 @@ class BuildServiceProvider extends PackageServiceProvider {
         require_once( __DIR__ . '/helpers.php');
 
         // Bind build class aliases
-        $this->package('esensi/build', 'esensi/build', __DIR__);
-        $this->addAliases('esensi/build', ['build']);
+        $this->package('esensi/assembler', 'esensi/assembler', __DIR__);
+        $this->addAliases('esensi/assembler', ['build']);
 
         // Get Blade compiler
         $blade = $this->app['view']->getEngineResolver()->resolve('blade')->getCompiler();

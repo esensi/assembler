@@ -1,14 +1,14 @@
-<?php namespace Esensi\Build\Commands;
+<?php namespace Esensi\Assembler\Commands;
 
-use Esensi\Build\Commands\BuildCommand;
+use Esensi\Assembler\Commands\BuildCommand;
 
 /**
  * Command for cleaning the already built assets.
  *
- * @package Esensi\Build
+ * @package Esensi\Assembler
  * @author daniel <dalabarge@emersonmedia.com>
  * @copyright 2014 Emerson Media LP
- * @license https://github.com/esensi/user/blob/master/LICENSE.txt MIT License
+ * @license https://github.com/esensi/assembler/blob/master/LICENSE.txt MIT License
  * @link http://www.emersonmedia.com
  */
 class BuildCleanCommand extends BuildCommand {

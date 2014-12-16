@@ -43,8 +43,8 @@ if ( ! function_exists('build_assets'))
         $assets = [];
 
         // Get build configs
-        $builds_dir = public_path(Config::get('esensi/build::build.directories.base', 'builds')) . '/' . Config::get('esensi/build::build.directories.' . $key, $key);
-        $builds_url = asset(Config::get('esensi/build::build.directories.base', 'builds')) . '/' . Config::get('esensi/build::build.directories.' . $key, $key);
+        $builds_dir = public_path(Config::get('esensi/assembler::build.directories.base', 'builds')) . '/' . Config::get('esensi/assembler::build.directories.' . $key, $key);
+        $builds_url = asset(Config::get('esensi/assembler::build.directories.base', 'builds')) . '/' . Config::get('esensi/assembler::build.directories.' . $key, $key);
 
         // Compile the manifest files
         $manifest_file = $builds_dir . '/rev-manifest.json';

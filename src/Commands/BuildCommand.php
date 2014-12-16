@@ -1,4 +1,4 @@
-<?php namespace Esensi\Build\Commands;
+<?php namespace Esensi\Assembler\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;
@@ -12,10 +12,10 @@ use Symfony\Component\Process\Process;
 /**
  * Command for building all the assets.
  *
- * @package Esensi\Build
+ * @package Esensi\Assembler
  * @author daniel <dalabarge@emersonmedia.com>
  * @copyright 2014 Emerson Media LP
- * @license https://github.com/esensi/user/blob/master/LICENSE.txt MIT License
+ * @license https://github.com/esensi/assembler/blob/master/LICENSE.txt MIT License
  * @link http://www.emersonmedia.com
  */
 class BuildCommand extends Command {

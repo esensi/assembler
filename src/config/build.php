@@ -4,14 +4,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Configuration values for Esensi\Build components package
+    | Configuration values for Esensi\Assembler components package
     |--------------------------------------------------------------------------
     |
     | The following lines contain the default configuration values for the
-    | Esensi\Build components package. You can publish these to your project for
+    | Esensi\Assembler components package. You can publish these to your project for
     | modification using the following Artisan command:
     |
-    | php artisan config:publish esensi/build
+    | php artisan config:publish esensi/assembler
     |
     */
 
@@ -28,14 +28,14 @@ return [
     */
 
     'aliases' => [
-        'EsensiBuildCommand'        => 'Esensi\Build\Commands\BuildCommand',
-        'EsensiBuildWatchCommand'   => 'Esensi\Build\Commands\BuildWatchCommand',
-        'EsensiBuildCleanCommand'   => 'Esensi\Build\Commands\BuildCleanCommand',
-        'EsensiBuildStylesCommand'  => 'Esensi\Build\Commands\BuildStylesCommand',
-        'EsensiBuildScriptsCommand' => 'Esensi\Build\Commands\BuildScriptsCommand',
-        'EsensiBuildImagesCommand'  => 'Esensi\Build\Commands\BuildImagesCommand',
-        'EsensiBuildFontsCommand'   => 'Esensi\Build\Commands\BuildFontsCommand',
-        'EsensiBuildLintCommand'    => 'Esensi\Build\Commands\BuildLintCommand',
+        'EsensiBuildCommand'        => 'Esensi\Assembler\Commands\BuildCommand',
+        'EsensiBuildWatchCommand'   => 'Esensi\Assembler\Commands\BuildWatchCommand',
+        'EsensiBuildCleanCommand'   => 'Esensi\Assembler\Commands\BuildCleanCommand',
+        'EsensiBuildStylesCommand'  => 'Esensi\Assembler\Commands\BuildStylesCommand',
+        'EsensiBuildScriptsCommand' => 'Esensi\Assembler\Commands\BuildScriptsCommand',
+        'EsensiBuildImagesCommand'  => 'Esensi\Assembler\Commands\BuildImagesCommand',
+        'EsensiBuildFontsCommand'   => 'Esensi\Assembler\Commands\BuildFontsCommand',
+        'EsensiBuildLintCommand'    => 'Esensi\Assembler\Commands\BuildLintCommand',
     ],
 
     /*
