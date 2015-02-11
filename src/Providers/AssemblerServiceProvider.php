@@ -1,11 +1,7 @@
 <?php namespace Esensi\Assembler\Providers;
 
-use Esensi\Core\Providers\PackageServiceProvider;
-use Illuminate\Console\Application;
-use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
-use InvalidArgumentException;
-use Symfony\Component\Finder\Finder;
+use Esensi\Core\Traits\ConfigLoaderTrait;
 
 /**
  * Service provider for Esensi\Assembler components package.
@@ -19,21 +15,11 @@ use Symfony\Component\Finder\Finder;
 class AssemblerServiceProvider extends ServiceProvider {
 
     /**
-     * Registers the resource dependencies.
+     * Make use of backported namespaced configs loader.
      *
-     * @return void
+     * @see Esensi\Core\Traits\ConfigLoaderTrait
      */
-    public function register()
-    {
-        // Add all of the Artisan commands
-        Event::listen('artisan.start', function(Application $artisan)
-        {
-            foreach(config('esensi/assembler::build.aliases', []) as $alias => $command)
-            {
-                $artisan->add(new $command());
-            }
-        });
-    }
+    use ConfigLoaderTrait;
 
     /**
      * Bootstrap the application events.
@@ -42,36 +28,28 @@ class AssemblerServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        // Make sure helpers are included
-        require_once( __DIR__ . '/../helpers.php');
+        $this->loadConfigsFrom(__DIR__ . '/../../config', 'esensi/assembler');
 
-        $namespace = 'esensi/assembler';
-        $path = config_path($namespace);
+        $this->extendBlade();
+    }
 
-        // Get the configs that need to be published
-        $configs = [];
-        $files = Finder::create()->files()->name('*.php')->in(__DIR__ . '/../config');
-        foreach($files as $file)
-        {
-            $configs[$file->getRealPath()] = $path . '/' . basename($file->getRealPath());
-        }
+    /**
+     * Registers the resource dependencies.
+     *
+     * @return void
+     */
+    public function register()
+    {
 
-        // Publish the configs to the app namespace
-        $this->publishes($configs, 'config');
+    }
 
-        // Wrapped in a try catch because Finder squawks when there is no directory
-        try{
-
-            // Load the namespaced config files
-            $files = Finder::create()->files()->name('*.php')->in($path);
-            foreach($files as $file)
-            {
-                $key = $namespace . '::' . basename($file->getRealPath(), '.php');
-                $this->app['config']->set($key, require $file->getRealPath());
-            }
-
-        } catch( InvalidArgumentException $e){}
-
+    /**
+     * Extend the Blade compiler with @styles and @scripts.
+     *
+     * @return void
+     */
+    public function extendBlade()
+    {
         // Get Blade compiler
         $blade = $this->app['blade.compiler'];
 
@@ -91,5 +69,4 @@ class AssemblerServiceProvider extends ServiceProvider {
             return preg_replace($matcher, '$1<?php echo build_styles($2); ?>', $value);
         });
     }
-
 }

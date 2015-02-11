@@ -1,9 +1,9 @@
-<?php namespace Esensi\Assembler\Commands;
+<?php namespace Esensi\Assembler\Console\Commands;
 
-use Esensi\Assembler\Commands\BuildCommand;
+use Esensi\Assembler\Console\Commands\BuildCommand;
 
 /**
- * Command for building the stylesheet assets.
+ * Command for cleaning the already built assets.
  *
  * @package Esensi\Assembler
  * @author daniel <dalabarge@emersonmedia.com>
@@ -11,21 +11,21 @@ use Esensi\Assembler\Commands\BuildCommand;
  * @license https://github.com/esensi/assembler/blob/master/LICENSE.txt MIT License
  * @link http://www.emersonmedia.com
  */
-class BuildStylesCommand extends BuildCommand {
+class BuildCleanCommand extends BuildCommand {
 
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'build:styles';
+    protected $name = 'build:clean';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Builds the application\'s stylesheet assets.';
+    protected $description = 'Cleans the application\'s old static asset builds.';
 
     /**
      * Execute the console command.
@@ -34,7 +34,7 @@ class BuildStylesCommand extends BuildCommand {
      */
     public function fire()
     {
-        $this->call('build', ['task' => 'styles']);
+        $this->call('build', ['task' => 'clean']);
     }
 
     /**
@@ -45,6 +45,18 @@ class BuildStylesCommand extends BuildCommand {
      * @return array
      */
     protected function getArguments()
+    {
+        return [];
+    }
+
+    /**
+     * Get the console command options.
+     *
+     * This is stubbed to overwrite parent class.
+     *
+     * @return array
+     */
+    protected function getOptions()
     {
         return [];
     }

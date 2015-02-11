@@ -1,9 +1,9 @@
-<?php namespace Esensi\Assembler\Commands;
+<?php namespace Esensi\Assembler\Console\Commands;
 
-use Esensi\Assembler\Commands\BuildCommand;
+use Esensi\Assembler\Console\Commands\BuildCommand;
 
 /**
- * Command for build the font assets.
+ * Command for building the script assets.
  *
  * @package Esensi\Assembler
  * @author daniel <dalabarge@emersonmedia.com>
@@ -11,21 +11,21 @@ use Esensi\Assembler\Commands\BuildCommand;
  * @license https://github.com/esensi/assembler/blob/master/LICENSE.txt MIT License
  * @link http://www.emersonmedia.com
  */
-class BuildFontsCommand extends BuildCommand {
+class BuildScriptsCommand extends BuildCommand {
 
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'build:fonts';
+    protected $name = 'build:scripts';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Builds the application\'s font assets.';
+    protected $description = 'Builds the application\'s script assets.';
 
     /**
      * Execute the console command.
@@ -34,7 +34,7 @@ class BuildFontsCommand extends BuildCommand {
      */
     public function fire()
     {
-        $this->call('build', ['task' => 'fonts']);
+        $this->call('build', ['task' => 'scripts']);
     }
 
     /**

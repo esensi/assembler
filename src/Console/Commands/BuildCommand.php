@@ -1,4 +1,4 @@
-<?php namespace Esensi\Assembler\Commands;
+<?php namespace Esensi\Assembler\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;

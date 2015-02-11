@@ -1,9 +1,9 @@
-<?php namespace Esensi\Assembler\Commands;
+<?php namespace Esensi\Assembler\Console\Commands;
 
-use Esensi\Assembler\Commands\BuildCommand;
+use Esensi\Assembler\Console\Commands\BuildCommand;
 
 /**
- * Command for linting the assets.
+ * Command for building the image assets.
  *
  * @package Esensi\Assembler
  * @author daniel <dalabarge@emersonmedia.com>
@@ -11,21 +11,21 @@ use Esensi\Assembler\Commands\BuildCommand;
  * @license https://github.com/esensi/assembler/blob/master/LICENSE.txt MIT License
  * @link http://www.emersonmedia.com
  */
-class BuildLintCommand extends BuildCommand {
+class BuildImagesCommand extends BuildCommand {
 
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'build:lint';
+    protected $name = 'build:images';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Lint the application\'s asset for errors in formatting.';
+    protected $description = 'Builds the application\'s image assets.';
 
     /**
      * Execute the console command.
@@ -34,7 +34,7 @@ class BuildLintCommand extends BuildCommand {
      */
     public function fire()
     {
-        $this->call('build', ['task' => 'lint']);
+        $this->call('build', ['task' => 'images']);
     }
 
     /**
@@ -45,18 +45,6 @@ class BuildLintCommand extends BuildCommand {
      * @return array
      */
     protected function getArguments()
-    {
-        return [];
-    }
-
-    /**
-     * Get the console command options.
-     *
-     * This is stubbed to overwrite parent class.
-     *
-     * @return array
-     */
-    protected function getOptions()
     {
         return [];
     }

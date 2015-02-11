@@ -1,10 +1,9 @@
-<?php namespace Esensi\Assembler\Commands;
+<?php namespace Esensi\Assembler\Console\Commands;
 
-use Esensi\Assembler\Commands\BuildCommand;
+use Esensi\Assembler\Console\Commands\BuildCommand;
 
 /**
- * Command for watching for asset changes and then
- * automatically rebuilding the changed assets.
+ * Command for build the font assets.
  *
  * @package Esensi\Assembler
  * @author daniel <dalabarge@emersonmedia.com>
@@ -12,21 +11,21 @@ use Esensi\Assembler\Commands\BuildCommand;
  * @license https://github.com/esensi/assembler/blob/master/LICENSE.txt MIT License
  * @link http://www.emersonmedia.com
  */
-class BuildWatchCommand extends BuildCommand {
+class BuildFontsCommand extends BuildCommand {
 
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'build:watch';
+    protected $name = 'build:fonts';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Watches for asset changes to build.';
+    protected $description = 'Builds the application\'s font assets.';
 
     /**
      * Execute the console command.
@@ -35,7 +34,7 @@ class BuildWatchCommand extends BuildCommand {
      */
     public function fire()
     {
-        $this->call('build', ['task' => 'watch']);
+        $this->call('build', ['task' => 'fonts']);
     }
 
     /**

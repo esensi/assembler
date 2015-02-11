@@ -28,14 +28,14 @@ return [
     */
 
     'aliases' => [
-        'EsensiBuildCommand'        => 'Esensi\Assembler\Commands\BuildCommand',
-        'EsensiBuildWatchCommand'   => 'Esensi\Assembler\Commands\BuildWatchCommand',
-        'EsensiBuildCleanCommand'   => 'Esensi\Assembler\Commands\BuildCleanCommand',
-        'EsensiBuildStylesCommand'  => 'Esensi\Assembler\Commands\BuildStylesCommand',
-        'EsensiBuildScriptsCommand' => 'Esensi\Assembler\Commands\BuildScriptsCommand',
-        'EsensiBuildImagesCommand'  => 'Esensi\Assembler\Commands\BuildImagesCommand',
-        'EsensiBuildFontsCommand'   => 'Esensi\Assembler\Commands\BuildFontsCommand',
-        'EsensiBuildLintCommand'    => 'Esensi\Assembler\Commands\BuildLintCommand',
+        'EsensiBuildCommand'        => 'Esensi\Assembler\Console\Commands\BuildCommand',
+        'EsensiBuildWatchCommand'   => 'Esensi\Assembler\Console\Commands\BuildWatchCommand',
+        'EsensiBuildCleanCommand'   => 'Esensi\Assembler\Console\Commands\BuildCleanCommand',
+        'EsensiBuildStylesCommand'  => 'Esensi\Assembler\Console\Commands\BuildStylesCommand',
+        'EsensiBuildScriptsCommand' => 'Esensi\Assembler\Console\Commands\BuildScriptsCommand',
+        'EsensiBuildImagesCommand'  => 'Esensi\Assembler\Console\Commands\BuildImagesCommand',
+        'EsensiBuildFontsCommand'   => 'Esensi\Assembler\Console\Commands\BuildFontsCommand',
+        'EsensiBuildLintCommand'    => 'Esensi\Assembler\Console\Commands\BuildLintCommand',
     ],
 
     /*
