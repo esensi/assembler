@@ -79,11 +79,11 @@ return [
     */
 
     'directories' => [
-        'base'    => 'builds',
+        'base'    => '',
         'fonts'   => 'fonts',
-        'images'  => 'images',
-        'scripts' => 'scripts',
-        'styles'  => 'styles',
+        'images'  => 'img',
+        'scripts' => 'js',
+        'styles'  => 'css',
     ],
 
 ];
