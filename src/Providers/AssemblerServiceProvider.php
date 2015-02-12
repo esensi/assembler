@@ -1,7 +1,8 @@
 <?php namespace Esensi\Assembler\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use Esensi\Core\Traits\AliasLoaderTrait;
 use Esensi\Core\Traits\ConfigLoaderTrait;
+use Illuminate\Support\ServiceProvider;
 
 /**
  * Service provider for Esensi\Assembler components package.
@@ -13,6 +14,13 @@ use Esensi\Core\Traits\ConfigLoaderTrait;
  * @link http://www.emersonmedia.com
  */
 class AssemblerServiceProvider extends ServiceProvider {
+
+    /**
+     * Load namespace aliases from the config files.
+     *
+     * @see Esensi\Core\Traits\AliasLoaderTrait
+     */
+    use AliasLoaderTrait;
 
     /**
      * Make use of backported namespaced configs loader.
@@ -28,8 +36,13 @@ class AssemblerServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $this->loadConfigsFrom(__DIR__ . '/../../config', 'esensi/assembler');
+        $namespace = 'esensi/assembler';
 
+        // Load config files
+        $this->loadConfigsFrom(__DIR__ . '/../../config', $namespace);
+        $this->loadAliasesFrom(config_path($namespace), $namespace);
+
+        // Setup core Blade extensions
         $this->extendBlade();
     }
 

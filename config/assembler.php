@@ -28,14 +28,14 @@ return [
     */
 
     'aliases' => [
-        'EsensiBuildCommand'        => 'Esensi\Assembler\Console\Commands\BuildCommand',
-        'EsensiBuildWatchCommand'   => 'Esensi\Assembler\Console\Commands\BuildWatchCommand',
-        'EsensiBuildCleanCommand'   => 'Esensi\Assembler\Console\Commands\BuildCleanCommand',
-        'EsensiBuildStylesCommand'  => 'Esensi\Assembler\Console\Commands\BuildStylesCommand',
-        'EsensiBuildScriptsCommand' => 'Esensi\Assembler\Console\Commands\BuildScriptsCommand',
-        'EsensiBuildImagesCommand'  => 'Esensi\Assembler\Console\Commands\BuildImagesCommand',
-        'EsensiBuildFontsCommand'   => 'Esensi\Assembler\Console\Commands\BuildFontsCommand',
-        'EsensiBuildLintCommand'    => 'Esensi\Assembler\Console\Commands\BuildLintCommand',
+        'App\Console\Commands\BuildCommand'        => 'Esensi\Assembler\Console\Commands\BuildCommand',
+        'App\Console\Commands\BuildWatchCommand'   => 'Esensi\Assembler\Console\Commands\BuildWatchCommand',
+        'App\Console\Commands\BuildCleanCommand'   => 'Esensi\Assembler\Console\Commands\BuildCleanCommand',
+        'App\Console\Commands\BuildStylesCommand'  => 'Esensi\Assembler\Console\Commands\BuildStylesCommand',
+        'App\Console\Commands\BuildScriptsCommand' => 'Esensi\Assembler\Console\Commands\BuildScriptsCommand',
+        'App\Console\Commands\BuildImagesCommand'  => 'Esensi\Assembler\Console\Commands\BuildImagesCommand',
+        'App\Console\Commands\BuildFontsCommand'   => 'Esensi\Assembler\Console\Commands\BuildFontsCommand',
+        'App\Console\Commands\BuildLintCommand'    => 'Esensi\Assembler\Console\Commands\BuildLintCommand',
     ],
 
     /*
