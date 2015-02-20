@@ -1,8 +1,6 @@
 <?php namespace Esensi\Assembler\Providers;
 
-use Esensi\Core\Traits\AliasLoaderTrait;
-use Esensi\Core\Traits\ConfigLoaderTrait;
-use Illuminate\Support\ServiceProvider;
+use App\Providers\ServiceProvider;
 
 /**
  * Service provider for Esensi\Assembler components package.
@@ -16,18 +14,11 @@ use Illuminate\Support\ServiceProvider;
 class AssemblerServiceProvider extends ServiceProvider {
 
     /**
-     * Load namespace aliases from the config files.
+     * The namespace of the loaded config files.
      *
-     * @see Esensi\Core\Traits\AliasLoaderTrait
+     * @var string
      */
-    use AliasLoaderTrait;
-
-    /**
-     * Make use of backported namespaced configs loader.
-     *
-     * @see Esensi\Core\Traits\ConfigLoaderTrait
-     */
-    use ConfigLoaderTrait;
+    protected $namespace = 'esensi/assembler';
 
     /**
      * Bootstrap the application events.
@@ -36,7 +27,7 @@ class AssemblerServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $namespace = 'esensi/assembler';
+        $namespace = $this->getNamespace();
 
         // Load config files
         $this->loadConfigsFrom(__DIR__ . '/../../config', $namespace);
