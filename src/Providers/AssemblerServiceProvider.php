@@ -1,6 +1,6 @@
 <?php namespace Esensi\Assembler\Providers;
 
-use App\Providers\ServiceProvider;
+use Esensi\Loaders\Providers\ServiceProvider;
 
 /**
  * Service provider for Esensi\Assembler components package.
