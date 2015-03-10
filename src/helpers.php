@@ -44,8 +44,20 @@ if ( ! function_exists('build_assets'))
 
         // Get build configs
         $file = 'esensi/assembler::assembler';
-        $builds_dir = public_path(config($file.'.directories.base', 'builds')) . '/' . config($file.'.directories.' . $key, $key);
-        $builds_url = asset(config($file.'.directories.base', 'builds')) . '/' . config($file.'.directories.' . $key, $key);
+
+        // Create URLs using base directory properly if a base directory is set
+        // (i.e. foobar.com/builds/styles, `build` is the base directory)
+        if (config($file.'.directories.base', 'builds'))
+        {
+            $builds_dir = public_path(config($file.'.directories.base', 'builds')) . '/' . config($file.'.directories.' . $key, $key);
+            $builds_url = asset(config($file.'.directories.base', 'builds')) . '/' . config($file.'.directories.' . $key, $key);
+        }
+        // Otherwise, use "bare" URLs with no base (i.e. foobar.com/styles)
+        else
+        {
+            $builds_dir = public_path(config($file.'.directories.' . $key, $key));
+            $builds_url = asset(config($file.'.directories.' . $key, $key));
+        }
 
         // Compile the manifest files
         $manifest_file = $builds_dir . '/rev-manifest.json';
