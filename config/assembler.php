@@ -79,7 +79,7 @@ return [
     */
 
     'directories' => [
-        'base'    => '',
+        'base'    => '/',
         'fonts'   => 'fonts',
         'images'  => 'img',
         'scripts' => 'js',
