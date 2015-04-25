@@ -1,6 +1,6 @@
 <?php namespace Esensi\Assembler\Console\Commands;
 
-use Illuminate\Console\Command;
+use App\Console\Commands\Command;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 use RuntimeException;
@@ -33,16 +33,6 @@ class BuildCommand extends Command {
      * @var string
      */
     protected $description = 'Build the application\'s assets with Gulp JS tasks.';
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
 
     /**
      * Execute the console command.

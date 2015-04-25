@@ -1,6 +1,6 @@
 <?php namespace Esensi\Assembler\Console\Commands;
 
-use Esensi\Assembler\Console\Commands\BuildCommand;
+use App\Console\Commands\BuildCommand as Command;
 
 /**
  * Command for watching for asset changes and then
@@ -12,7 +12,7 @@ use Esensi\Assembler\Console\Commands\BuildCommand;
  * @license https://github.com/esensi/assembler/blob/master/LICENSE.txt MIT License
  * @link http://www.emersonmedia.com
  */
-class BuildWatchCommand extends BuildCommand {
+class BuildWatchCommand extends Command {
 
     /**
      * The console command name.

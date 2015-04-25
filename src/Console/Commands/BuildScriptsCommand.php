@@ -1,6 +1,6 @@
 <?php namespace Esensi\Assembler\Console\Commands;
 
-use Esensi\Assembler\Console\Commands\BuildCommand;
+use App\Console\Commands\BuildCommand as Command;
 
 /**
  * Command for building the script assets.
@@ -11,7 +11,7 @@ use Esensi\Assembler\Console\Commands\BuildCommand;
  * @license https://github.com/esensi/assembler/blob/master/LICENSE.txt MIT License
  * @link http://www.emersonmedia.com
  */
-class BuildScriptsCommand extends BuildCommand {
+class BuildScriptsCommand extends Command {
 
     /**
      * The console command name.
