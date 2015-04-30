@@ -10,13 +10,18 @@ if ( ! function_exists('build_styles'))
      */
     function build_styles()
     {
+        // Get the builds dir
+        $file = 'esensi/assembler::assembler';
+        $key = 'styles';
+        $builds_dir = public_path(config($file.'.directories.base', 'builds')) . config($file.'.directories.' . $key, $key);
+
         // Compile the manifest files
         $manifest_file = $builds_dir . '/manifest.json';
         if( ! file_exists($manifest_file) ) return;
         $manifest = (array) json_decode(file_get_contents($manifest_file), true);
 
         // Build the assets from the manifest
-        return build_assets(func_get_args(), 'styles', 'css', $manifest);
+        return build_assets(func_get_args(), $key, 'css', $manifest);
     }
 }
 
@@ -33,6 +38,11 @@ if ( ! function_exists('build_scripts'))
         // Get the dependencies
         $dependencies = func_get_args();
 
+        // Get the builds dir
+        $file = 'esensi/assembler::assembler';
+        $key = 'scripts';
+        $builds_dir = public_path(config($file.'.directories.base', 'builds')) . config($file.'.directories.' . $key, $key);
+
         // Compile the manifest files
         $manifest = [];
         foreach($dependencies as $dependency)
@@ -42,7 +52,7 @@ if ( ! function_exists('build_scripts'))
             $manifest = array_merge($manifest, (array) json_decode(file_get_contents($manifest_file), true));
         }
 
-        return build_assets($dependencies, 'scripts', 'js', $manifest);
+        return build_assets($dependencies, $key, 'js', $manifest);
     }
 }
 
@@ -63,7 +73,6 @@ if ( ! function_exists('build_assets'))
 
         // Get build configs
         $file = 'esensi/assembler::assembler';
-        $builds_dir = public_path(config($file.'.directories.base', 'builds')) . config($file.'.directories.' . $key, $key);
         $builds_url = asset(config($file.'.directories.base', 'builds')) . config($file.'.directories.' . $key, $key);
 
         // Babysit dependencies so we don't have duplications
