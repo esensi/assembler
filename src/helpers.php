@@ -10,7 +10,13 @@ if ( ! function_exists('build_styles'))
      */
     function build_styles()
     {
-        return build_assets(func_get_args(), 'styles', 'css');
+        // Compile the manifest files
+        $manifest_file = $builds_dir . '/manifest.json';
+        if( ! file_exists($manifest_file) ) return;
+        $manifest = (array) json_decode(file_get_contents($manifest_file), true);
+
+        // Build the assets from the manifest
+        return build_assets(func_get_args(), 'styles', 'css', $manifest);
     }
 }
 
@@ -24,7 +30,19 @@ if ( ! function_exists('build_scripts'))
      */
     function build_scripts()
     {
-        return build_assets(func_get_args(), 'scripts', 'js');
+        // Get the dependencies
+        $dependencies = func_get_args();
+
+        // Compile the manifest files
+        $manifest = [];
+        foreach($dependencies as $dependency)
+        {
+            $manifest_file = $builds_dir . '/' . $dependency . '.json';
+            if( ! file_exists($manifest_file) ) continue;
+            $manifest = array_merge($manifest, (array) json_decode(file_get_contents($manifest_file), true));
+        }
+
+        return build_assets($dependencies, 'scripts', 'js', $manifest);
     }
 }
 
@@ -36,9 +54,10 @@ if ( ! function_exists('build_assets'))
      * @param array $dependencies
      * @param string $key
      * @param string $extension
+     * @param array $manifest
      * @return string
      */
-    function build_assets($dependencies = [], $key, $extension)
+    function build_assets($dependencies = [], $key, $extension, $manifest)
     {
         $assets = [];
 
@@ -46,11 +65,6 @@ if ( ! function_exists('build_assets'))
         $file = 'esensi/assembler::assembler';
         $builds_dir = public_path(config($file.'.directories.base', 'builds')) . config($file.'.directories.' . $key, $key);
         $builds_url = asset(config($file.'.directories.base', 'builds')) . config($file.'.directories.' . $key, $key);
-
-        // Compile the manifest files
-        $manifest_file = $builds_dir . '/rev-manifest.json';
-        if( ! file_exists($manifest_file) ) return;
-        $manifest = json_decode(file_get_contents($manifest_file), true);
 
         // Babysit dependencies so we don't have duplications
         $dependencies = array_unique($dependencies);
