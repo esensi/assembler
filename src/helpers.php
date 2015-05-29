@@ -69,10 +69,27 @@ if ( ! function_exists('build_assets'))
      */
     function build_assets($dependencies = [], $key, $extension, $manifest)
     {
+        // This function used to "fail" silently. There is default behavior that
+        // we can expect with frontend assets, and we should log when we don't
+        // see that behavior.
+        // It's possible that this non-default behavior is desired, but this is
+        // the exception! so we added some Log::warning messages in those cases
+
         $assets = [];
 
         // Get build configs
         $file = 'esensi/assembler::assembler';
+        $builds_dir = public_path(config($file.'.directories.base', 'builds')) . config($file.'.directories.' . $key, $key);
+
+        // Warn if $builds_dir does not exist.
+        if ( config('app.debug') )
+        {
+            if ( ! file_exists($builds_dir) )
+            {
+                Log::warning("The assets builds directory '$builds_dir' doesn't exist or is inaccessible.");
+            }
+        }
+
         $builds_url = asset(config($file.'.directories.base', 'builds')) . config($file.'.directories.' . $key, $key);
 
         // Babysit dependencies so we don't have duplications
@@ -89,17 +106,42 @@ if ( ! function_exists('build_assets'))
             {
                 // Get the latest revision
                 $revision = $manifest[$dependency];
+                $revisionFilePath = $builds_dir . '/' . $revision;
 
                 // Generate HTML for including the dependency
                 switch($key)
                 {
                     case 'styles':
+                        // Warn if this file does not exist.
+                        if ( config('app.debug') )
+                        {
+                            if ( ! file_exists($revisionFilePath) )
+                            {
+                                Log::warning("The style revision file '$revisionFilePath' doesn't exist or is inaccessible.");
+                            }
+                        }
                         $assets[] = '<link rel="stylesheet" href="' . $builds_url . '/' . $revision .'">';
                         break;
 
                     case 'scripts':
+                        // Warn if this file does not exist.
+                        if ( config('app.debug') )
+                        {
+                            if ( ! file_exists($revisionFilePath) )
+                            {
+                                Log::warning("The script revision file '$revisionFilePath' doesn't exist or is inaccessible.");
+                            }
+                        }
                         $assets[] = '<script type="text/javascript" src="' . $builds_url . '/' . $revision .'"></script>';
                         break;
+                }
+            }
+            else
+            {
+                // Warn that a dependency is requested but not built.
+                if ( config('app.debug') )
+                {
+                    Log::warning("The dependency '$dependency' is NOT built, skipping!");
                 }
             }
         }
