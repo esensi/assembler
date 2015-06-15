@@ -27,24 +27,12 @@ class AssemblerServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $namespace = $this->getNamespace();
-
         // Load config files
-        $this->loadConfigsFrom(__DIR__ . '/../../config', $namespace);
-        $this->loadAliasesFrom(config_path($namespace), $namespace);
+        $this->loadConfigsFrom(__DIR__ . '/../../config', $this->namespace);
+        $this->loadAliasesFrom(config_path($this->namespace), $this->namespace);
 
         // Setup core Blade extensions
         $this->extendBlade();
-    }
-
-    /**
-     * Registers the resource dependencies.
-     *
-     * @return void
-     */
-    public function register()
-    {
-
     }
 
     /**

@@ -9,7 +9,7 @@
         },
         {
             "name": "Daniel LaBarge",
-            "email": "daniel@bexarcreative.com"
+            "email": "daniel@emersonmedia.com"
         }
     ],
     "license": "MIT",
@@ -18,12 +18,6 @@
         "illuminate/support": "~5.0.0",
         "esensi/core": "0.5.x"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/esensi/core.git"
-        }
-    ],
     "autoload": {
         "files": [
             "src/helpers.php"
