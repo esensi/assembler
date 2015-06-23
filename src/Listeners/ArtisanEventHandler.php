@@ -1,4 +1,4 @@
-<?php namespace Esensi\Assembler\Handlers\Events;
+<?php namespace Esensi\Assembler\Listeners;
 
 use Illuminate\Contracts\Console\Application;
 
@@ -11,7 +11,7 @@ use Illuminate\Contracts\Console\Application;
  * @license https://github.com/esensi/assembler/blob/master/LICENSE.txt MIT License
  * @link http://www.emersonmedia.com
  */
-class ArtisanHandler {
+class ArtisanEventListener {
 
     /**
      * Add commands to Artisan.

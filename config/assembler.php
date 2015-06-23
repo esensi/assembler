@@ -11,7 +11,7 @@ return [
     | Esensi\Assembler components package. You can publish these to your project for
     | modification using the following Artisan command:
     |
-    | php artisan config:publish esensi/assembler
+    | php artisan vendor:publish --provider="Esensi\Assembler\Providers\AssemblerServiceProvider"
     |
     */
 
@@ -28,14 +28,14 @@ return [
     */
 
     'aliases' => [
-        'App\Console\Commands\BuildCommand'        => 'Esensi\Assembler\Console\Commands\BuildCommand',
-        'App\Console\Commands\BuildWatchCommand'   => 'Esensi\Assembler\Console\Commands\BuildWatchCommand',
-        'App\Console\Commands\BuildCleanCommand'   => 'Esensi\Assembler\Console\Commands\BuildCleanCommand',
-        'App\Console\Commands\BuildStylesCommand'  => 'Esensi\Assembler\Console\Commands\BuildStylesCommand',
-        'App\Console\Commands\BuildScriptsCommand' => 'Esensi\Assembler\Console\Commands\BuildScriptsCommand',
-        'App\Console\Commands\BuildImagesCommand'  => 'Esensi\Assembler\Console\Commands\BuildImagesCommand',
-        'App\Console\Commands\BuildFontsCommand'   => 'Esensi\Assembler\Console\Commands\BuildFontsCommand',
-        'App\Console\Commands\BuildLintCommand'    => 'Esensi\Assembler\Console\Commands\BuildLintCommand',
+        'App\Console\Commands\BuildCommand'        => Esensi\Assembler\Console\Commands\BuildCommand::class,
+        'App\Console\Commands\BuildWatchCommand'   => Esensi\Assembler\Console\Commands\BuildWatchCommand::class,
+        'App\Console\Commands\BuildCleanCommand'   => Esensi\Assembler\Console\Commands\BuildCleanCommand::class,
+        'App\Console\Commands\BuildStylesCommand'  => Esensi\Assembler\Console\Commands\BuildStylesCommand::class,
+        'App\Console\Commands\BuildScriptsCommand' => Esensi\Assembler\Console\Commands\BuildScriptsCommand::class,
+        'App\Console\Commands\BuildImagesCommand'  => Esensi\Assembler\Console\Commands\BuildImagesCommand::class,
+        'App\Console\Commands\BuildFontsCommand'   => Esensi\Assembler\Console\Commands\BuildFontsCommand::class,
+        'App\Console\Commands\BuildLintCommand'    => Esensi\Assembler\Console\Commands\BuildLintCommand::class,
     ],
 
     /*

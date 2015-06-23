@@ -7,6 +7,7 @@ Esensi is an awesome Laravel boilerplate application. This package contains the 
 - [Esensi\Build](http://github.com/esensi/build/tree/master/src): asset package build tasks built with GulpJS
 - [Esensi\Core](http://github.com/esensi/core/tree/master/src): foundational package for other components packages
 - [Esensi\Model](http://github.com/esensi/model/tree/master/src): traits package for Eloquent model utilities
+- [Esensi\Page](http://github.com/esensi/page/tree/master/src): flat file Blade pages and Markdown post static site package
 - [Esensi\Parcel](http://github.com/esensi/parcel/tree/master/src) (optional): mail parsing drivers for incoming email
 - [Esensi\User](http://github.com/esensi/user/tree/master/src): user management components package with role-based permissions
 
