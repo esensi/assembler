@@ -13,7 +13,7 @@ if ( ! function_exists('build_styles'))
         // Get the builds dir
         $file = 'esensi/assembler::assembler';
         $key = 'styles';
-        $builds_dir = public_path(config($file.'.directories.base', 'builds') . '/' . config($file.'.directories.' . $key, $key));
+        $builds_dir = public_path(ltrim(config($file.'.directories.base', 'builds') . config($file.'.directories.' . $key, $key), '/'));
 
         // Compile the manifest files
         $manifest_file = $builds_dir . '/manifest.json';
@@ -41,7 +41,7 @@ if ( ! function_exists('build_scripts'))
         // Get the builds dir
         $file = 'esensi/assembler::assembler';
         $key = 'scripts';
-        $builds_dir = public_path(config($file.'.directories.base', 'builds') . '/' . config($file.'.directories.' . $key, $key));
+        $builds_dir = public_path(ltrim(config($file.'.directories.base', 'builds') . config($file.'.directories.' . $key, $key), '/'));
 
         // Compile the manifest files
         $manifest = [];
@@ -79,7 +79,7 @@ if ( ! function_exists('build_assets'))
 
         // Get build configs
         $file = 'esensi/assembler::assembler';
-        $builds_dir = public_path(config($file.'.directories.base', 'builds') . '/' . config($file.'.directories.' . $key, $key));
+        $builds_dir = public_path(ltrim(config($file.'.directories.base', 'builds') . config($file.'.directories.' . $key, $key), '/'));
 
         // Warn if $builds_dir does not exist.
         if ( config('app.debug') )
