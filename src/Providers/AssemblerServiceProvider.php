@@ -32,7 +32,7 @@ class AssemblerServiceProvider extends ServiceProvider {
         $this->loadAliasesFrom(config_path($this->namespace), $this->namespace);
 
         // Setup core Blade extensions
-        $this->extendBlade();
+        $this->addDirectives();
     }
 
     /**
@@ -50,25 +50,21 @@ class AssemblerServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function extendBlade()
+    public function addDirectives()
     {
         // Get Blade compiler
         $blade = $this->app['blade.compiler'];
 
         // Add @scripts($dependency1, $dependency2, $dependencyN)
-        $blade->extend(function($value, $compiler)
+        $blade->directive('scripts', function($expression)
         {
-            $matcher = $compiler->createMatcher('scripts');
-
-            return preg_replace($matcher, '$1<?php echo build_scripts($2); ?>', $value);
+            return '<?php echo build_scripts(' . $expression . '); ?>';
         });
 
         // Add @styles($dependency1, $dependency2, $dependencyN)
-        $blade->extend(function($value, $compiler)
+        $blade->directive('styles', function($expression)
         {
-            $matcher = $compiler->createMatcher('styles');
-
-            return preg_replace($matcher, '$1<?php echo build_styles($2); ?>', $value);
+            return '<?php echo build_styles(' . $expression . '); ?>';
         });
     }
 }
