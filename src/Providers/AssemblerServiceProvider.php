@@ -1,18 +1,20 @@
-<?php namespace Esensi\Assembler\Providers;
+<?php
+
+namespace Esensi\Assembler\Providers;
 
 use Esensi\Loaders\Providers\ServiceProvider;
 
 /**
  * Service provider for Esensi\Assembler components package.
  *
- * @package Esensi\Assembler
- * @author daniel <dalabarge@emersonmedia.com>
- * @copyright 2014 Emerson Media LP
- * @license https://github.com/esensi/assembler/blob/master/LICENSE.txt MIT License
- * @link http://www.emersonmedia.com
+ * @package   Esensi\Assembler
+ * @author    Daniel LaBarge <daniel@emersonmedia.com>
+ * @copyright 2015 Emerson Media LP
+ * @license   https://github.com/esensi/assembler/blob/master/LICENSE.txt MIT License
+ * @link      http://www.emersonmedia.com
  */
-class AssemblerServiceProvider extends ServiceProvider {
-
+class AssemblerServiceProvider extends ServiceProvider
+{
     /**
      * The namespace of the loaded config files.
      *

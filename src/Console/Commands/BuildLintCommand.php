@@ -1,18 +1,20 @@
-<?php namespace Esensi\Assembler\Console\Commands;
+<?php
+
+namespace Esensi\Assembler\Console\Commands;
 
 use App\Console\Commands\BuildCommand as Command;
 
 /**
  * Command for linting the assets.
  *
- * @package Esensi\Assembler
- * @author daniel <dalabarge@emersonmedia.com>
- * @copyright 2014 Emerson Media LP
- * @license https://github.com/esensi/assembler/blob/master/LICENSE.txt MIT License
- * @link http://www.emersonmedia.com
+ * @package   Esensi\Assembler
+ * @author    Daniel LaBarge <daniel@emersonmedia.com>
+ * @copyright 2015 Emerson Media LP
+ * @license   https://github.com/esensi/assembler/blob/master/LICENSE.txt MIT License
+ * @link      http://www.emersonmedia.com
  */
-class BuildLintCommand extends Command {
-
+class BuildLintCommand extends Command
+{
     /**
      * The console command name.
      *
