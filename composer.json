@@ -14,9 +14,9 @@
     ],
     "license": "MIT",
     "require": {
-        "php": ">=5.5.9",
-        "illuminate/support": "~5.1.0",
-        "esensi/core": "0.6.x"
+        "php": ">=7.0.0",
+        "illuminate/support": "~5.5.0",
+        "esensi/core": "0.7.x"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
