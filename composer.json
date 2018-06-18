@@ -14,7 +14,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": ">=7.0.0",
+        "php": ">=7.0",
         "illuminate/support": "~5.5.0",
         "esensi/core": "0.7.x"
     },
