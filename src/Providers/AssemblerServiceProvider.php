@@ -3,6 +3,7 @@
 namespace Esensi\Assembler\Providers;
 
 use Esensi\Loaders\Providers\ServiceProvider;
+use Symfony\Component\Finder\Finder;
 
 /**
  * Service provider for Esensi\Assembler components package.
@@ -44,7 +45,9 @@ class AssemblerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        if ($this->app->runningInConsole()) {
+            $this->registerCommand();
+        }
     }
 
     /**
@@ -68,5 +71,18 @@ class AssemblerServiceProvider extends ServiceProvider
         {
             return '<?php echo build_styles(' . $expression . '); ?>';
         });
+    }
+
+    private function registerCommand()
+    {
+        $files = Finder::create()->files()->name('*.php')->in(__DIR__ . '/../Console/Commands');
+
+        $commands = [];
+        foreach ($files as $file) {
+            $filename = basename($file->getRealPath(), '.php');
+            $commands[] = "App\\Console\\Commands\\$filename";
+        }
+
+        $this->commands($commands);
     }
 }

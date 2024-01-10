@@ -34,7 +34,7 @@ class BuildScriptsCommand extends Command
      *
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         $this->call('build', ['task' => 'scripts']);
     }
