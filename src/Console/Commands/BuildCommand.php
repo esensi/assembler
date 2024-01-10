@@ -42,14 +42,14 @@ class BuildCommand extends Command
      * @see http://symfony.com/blog/new-in-symfony-2-2-process-component-enhancements
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         // Construct the Gulp JS command
         $gulp_path = Config::get('esensi/build::build.binary');
-        if( ! $gulp_path )
-        {
-            $gulp_path = base_path() . '/node_modules/.bin/gulp';
-        }
+
+        if(!$gulp_path )
+            $gulp_path = 'npx gulp';
+
         $gulp_command = $gulp_path . ' build';
 
         $task = $this->argument('task');
@@ -95,56 +95,30 @@ class BuildCommand extends Command
 
         // Run in production mode
         if($is_production || $this->option('production') === true)
-        {
             $gulp_command .= ' --production';
-        }
 
-        // Add the gulp command to the proccesses
-        $processes = [
-            new Process($gulp_command)
-        ];
+        // Run gulp process
+        $process = new Process(['bash', '-c', $gulp_command]);
+        $process->start();
 
         // Keep the processes running without timeout
-        while( count($processes) > 0 )
-        {
-            foreach($processes as $i => $process)
-            {
-                // Start processes that haven't started yet
-                if(!$process->isStarted())
-                {
-                    $process->start();
-                    continue;
-                }
+        do {
+            // Show incremental output
+            echo $process->getIncrementalOutput();
 
-                // Show incremental output
-                echo $process->getIncrementalOutput();
+            // Show incremental error output with highlighting
+            $output = $process->getIncrementalErrorOutput();
+            if(!empty($output))
+                $this->error(rtrim($output, "\n"));
 
-                // Show incremental error output with highlighting
-                $output = $process->getIncrementalErrorOutput();
-                if(!empty($output))
-                {
-                    $this->error(rtrim($output, "\n"));
-                }
+        } while ($process->isRunning());
 
-                // Remove the process once it's stopped running
-                if(!$process->isRunning())
-                {
-                    // Show success when it completes
-                    if($process->isSuccessful())
-                    {
-                        $this->info('Builder has finished running "' . $gulp_command . '".');
-                    }
-
-                    // Show error when it errors out
-                    else
-                    {
-                        $this->error('Builder encountered an error while running "' . $gulp_command . '".');
-                    }
-
-                    // Remove the process from those running
-                    unset($processes[$i]);
-                }
-            }
+        if($process->isSuccessful()) {
+            $this->info('Builder has finished running "' . $gulp_command . '".');
+        }
+        // Show error when it errors out
+        else {
+            $this->error('Builder encountered an error while running "' . $gulp_command . '".');
         }
     }
 
