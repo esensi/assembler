@@ -18,14 +18,13 @@ class ArtisanEventListener
     /**
      * Add commands to Artisan.
      *
-     * @param  Illuminate\Contracts\Console\Application $app
      * @return void
      */
-    public function addCommands(Application $app)
+    public function addCommands($app)
     {
         foreach(config('esensi/assembler::assembler.aliases', []) as $alias => $command)
         {
-            $app->add(new $command());
+            $app->artisan->add(new $command());
         }
     }
 
