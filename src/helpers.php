@@ -67,7 +67,7 @@ if ( ! function_exists('build_assets'))
      * @param array $manifest
      * @return string
      */
-    function build_assets($dependencies = [], $key, $extension, $manifest)
+    function build_assets($dependencies, $key, $extension, $manifest)
     {
         // This function used to "fail" silently. There is default behavior that
         // we can expect with frontend assets, and we should log when we don't
